@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @Date:11:09 2024/3/19
  */
 @SpringBootApplication
-@MapperScan("com.jingdianjichi.**.mapper")
+@MapperScan({"com.jingdianjichi.**.mapper","com.jingdianjichi.**.dao"})
 @ComponentScan("com.jingdianjichi.subject")
 
 public class SubjectApplication {
