@@ -16,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubjectCategoryDTO implements Serializable {
-    private static final long serialVersionUID = 444799139909738099L;
+    private static final long serialVersionUID = 1444799139909738099L;
     /**
      * 主键
      */

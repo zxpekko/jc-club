@@ -16,4 +16,8 @@ public interface SubjectCategoryDomainService {
     List<SubjectCategoryBO> queryPrimaryCategory();
 
     List<SubjectCategoryBO> queryCategory(SubjectCategoryBO subjectCategoryBO);
+
+    Boolean update(SubjectCategoryBO subjectCategoryBO);
+
+    Boolean deleteById(SubjectCategoryBO subjectCategoryBO);
 }
