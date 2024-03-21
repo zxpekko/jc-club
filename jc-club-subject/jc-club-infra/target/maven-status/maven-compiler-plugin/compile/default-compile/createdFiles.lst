@@ -1,0 +1,4 @@
+com\jingdianjichi\subject\infra\basic\entity\SubjectCategory.class
+com\jingdianjichi\subject\infra\basic\mapper\SubjectCategoryDao.class
+com\jingdianjichi\subject\infra\basic\service\SubjectCategoryService.class
+com\jingdianjichi\subject\infra\basic\service\impl\SubjectCategoryServiceImpl.class

@@ -29,6 +29,7 @@ public class SubjectCategoryDomainServiceImpl implements SubjectCategoryDomainSe
         if(log.isInfoEnabled())
             log.info("SubjectCategoryController.add.bo:{}", JSON.toJSONString(subjectCategoryBO));
         SubjectCategory subjectCategory = SubjectCategoryConverter.INSTANCE.convertBoToCategory(subjectCategoryBO);
+        subjectCategory.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
         subjectCategoryService.insert(subjectCategory);
     }
 
@@ -48,6 +49,8 @@ public class SubjectCategoryDomainServiceImpl implements SubjectCategoryDomainSe
 //        SubjectCategory querySubjectCategory = new SubjectCategory();
 //        querySubjectCategory.setParentId(subjectCategoryBO.getId());
         SubjectCategory querySubjectCategory = SubjectCategoryConverter.INSTANCE.convertBoToCategory(subjectCategoryBO);
+        querySubjectCategory.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
+
         List<SubjectCategory> subjectCategoryList= subjectCategoryService.queryPrimaryCategory(querySubjectCategory);
         List<SubjectCategoryBO> subjectCategoryBOList = SubjectCategoryConverter.INSTANCE.convertBoToCategory(subjectCategoryList);
         return subjectCategoryBOList;
