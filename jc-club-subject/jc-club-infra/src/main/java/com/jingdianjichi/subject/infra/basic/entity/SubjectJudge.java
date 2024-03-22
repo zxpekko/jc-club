@@ -6,14 +6,14 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * 题目分类关系表(SubjectMapping)实体类
+ * 判断题(SubjectJudge)实体类
  *
  * @author makejava
- * @since 2024-03-21 20:03:47
+ * @since 2024-03-22 10:09:43
  */
 @Data
-public class SubjectMapping implements Serializable {
-    private static final long serialVersionUID = -22311250886288059L;
+public class SubjectJudge implements Serializable {
+    private static final long serialVersionUID = -93441396725792226L;
     /**
      * 主键
      */
@@ -23,13 +23,9 @@ public class SubjectMapping implements Serializable {
      */
     private Long subjectId;
     /**
-     * 分类id
+     * 是否正确
      */
-    private Long categoryId;
-    /**
-     * 标签id
-     */
-    private Long labelId;
+    private Integer isCorrect;
     /**
      * 创建人
      */
@@ -39,14 +35,15 @@ public class SubjectMapping implements Serializable {
      */
     private Date createdTime;
     /**
-     * 修改人
+     * 更新人
      */
     private String updateBy;
     /**
-     * 修改时间
+     * 更新时间
      */
     private Date updateTime;
     
     private Integer isDeleted;
+
 }
 
