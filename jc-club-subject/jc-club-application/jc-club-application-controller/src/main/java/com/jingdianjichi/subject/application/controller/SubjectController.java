@@ -97,12 +97,12 @@ public class SubjectController {
             SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
 //            System.out.println(subjectInfoBO.getLabelName());
             SubjectInfoBO boResult = subjectInfoDomainService.querySubjectInfo(subjectInfoBO);
-            System.out.println(boResult.getLabelName());
+//            System.out.println(boResult.getLabelName());
             SubjectInfoDTO dto = SubjectInfoDTOConverter.INSTANCE.convertBOToDTO(boResult);
             dto.setLabelName(boResult.getLabelName());
-            System.out.println(dto.getLabelName());
-            System.out.println(dto);
-            System.out.println(Result.ok(dto));
+//            System.out.println(dto.getLabelName());
+//            System.out.println(dto);
+//            System.out.println(Result.ok(dto));
             return Result.ok(dto);
         } catch (Exception e) {
             log.error("SubjectCategoryController.add.error:{}", e.getMessage(), e);
