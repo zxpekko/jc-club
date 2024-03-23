@@ -80,5 +80,6 @@ public interface SubjectBriefDao {
      */
     int deleteById(Long id);
 
+    SubjectBrief queryAllByLimit(SubjectBrief subjectBrief);
 }
 

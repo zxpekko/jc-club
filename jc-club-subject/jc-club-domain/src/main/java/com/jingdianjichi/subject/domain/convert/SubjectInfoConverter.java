@@ -2,6 +2,7 @@ package com.jingdianjichi.subject.domain.convert;
 
 //import com.jingdianjichi.subject.application.dto.SubjectInfoDTO;
 import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
+import com.jingdianjichi.subject.domain.entity.SubjectOptionBO;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -24,5 +25,7 @@ public interface SubjectInfoConverter {
     SubjectInfoBO convertInfoToBO(SubjectInfo subjectInfo);
 
     List<SubjectInfoBO> convertInfoToBOList(List<SubjectInfo> subjectInfo);
+    SubjectInfoBO convertOptionAndInfoToBo(SubjectOptionBO subjectOptionBO, SubjectInfo subjectInfo);
+//    SubjectInfo convertBOToInfo(SubjectInfoBO subjectInfoBO);
 
 }

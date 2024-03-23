@@ -57,4 +57,6 @@ public interface SubjectRadioService {
     boolean deleteById(Long id);
 
     void batchInsert(List<SubjectRadio> subjectRadioList);
+
+    List<SubjectRadio> queryByCondition(SubjectRadio subjectRadio);
 }

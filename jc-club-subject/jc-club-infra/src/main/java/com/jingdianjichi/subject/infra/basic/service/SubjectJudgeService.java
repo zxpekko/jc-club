@@ -2,6 +2,8 @@ package com.jingdianjichi.subject.infra.basic.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectJudge;
+
+import java.util.List;
 //import org.springframework.data.domain.Page;
 //import org.springframework.data.domain.PageRequest;
 
@@ -54,4 +56,5 @@ public interface SubjectJudgeService {
      */
     boolean deleteById(Long id);
 
+    List<SubjectJudge> queryByCondition(SubjectJudge subjectJudge);
 }

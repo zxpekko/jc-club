@@ -80,5 +80,6 @@ public interface SubjectMultipleDao {
      */
     int deleteById(Long id);
 
+    List<SubjectMultiple> queryAllByLimit(SubjectMultiple subjectMultiple);
 }
 
