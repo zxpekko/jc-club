@@ -38,7 +38,7 @@ public class DruidEncryptUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        String encrypt = encrypt("19991126@zxp");
+        String encrypt = encrypt("");
         System.out.println("encrypt :"+encrypt);
         System.out.println(ConfigTools.decrypt("MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKjZ26fhDlgOSMGfmUGHXrNQnBRo8z3qccS4V5FHw8OH8SOgCLz+a3caA6h6CKbHKEfzx/b5yxrgur0UVb+OYxMCAwEAAQ==", "gLaE6POG3veRP25yrsfXsdIHQ6gFgMs6BKhVIicwWpauwsvquNXOdfcqyvLpsz9gK5IgPwmhJQt02dNYjSPTwA=="));
     }
