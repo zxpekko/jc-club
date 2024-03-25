@@ -26,6 +26,11 @@ public class SubjectLabel implements Serializable {
      * 排序
      */
     private Integer sortNum;
+
+    /**
+     * 分类id
+     */
+    private Long categoryId;
     /**
      * 创建人
      */

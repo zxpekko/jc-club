@@ -56,4 +56,6 @@ public interface SubjectLabelService {
     boolean deleteById(Long id);
 
     List<SubjectLabel> batchQueryById(List<Long> collect);
+
+    List<SubjectLabel> queryByCondition(SubjectLabel subjectLabel);
 }

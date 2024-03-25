@@ -1,0 +1,10 @@
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\config\StorageConfig.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\adapter\MinioStorageAdapter.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\OssApplication.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\service\FileService.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\adapter\AliStorageAdapter.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\entity\FileInfo.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\util\MinioUtil.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\controller\FileController.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\config\MinioConfig.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-oss\src\main\java\com\jingdianjichi\oss\adapter\StorageAdapter.java

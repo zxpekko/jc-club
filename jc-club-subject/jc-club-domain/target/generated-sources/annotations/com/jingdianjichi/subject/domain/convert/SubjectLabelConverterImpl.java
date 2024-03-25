@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-23T14:28:09+0800",
+    date = "2024-03-25T11:21:28+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_331 (Oracle Corporation)"
 )
 public class SubjectLabelConverterImpl implements SubjectLabelConverter {
@@ -24,6 +24,7 @@ public class SubjectLabelConverterImpl implements SubjectLabelConverter {
         subjectLabel.setId( subjectLabelBO.getId() );
         subjectLabel.setLabelName( subjectLabelBO.getLabelName() );
         subjectLabel.setSortNum( subjectLabelBO.getSortNum() );
+        subjectLabel.setCategoryId( subjectLabelBO.getCategoryId() );
 
         return subjectLabel;
     }
@@ -50,6 +51,7 @@ public class SubjectLabelConverterImpl implements SubjectLabelConverter {
         SubjectLabelBO subjectLabelBO = new SubjectLabelBO();
 
         subjectLabelBO.setId( subjectLabel.getId() );
+        subjectLabelBO.setCategoryId( subjectLabel.getCategoryId() );
         subjectLabelBO.setLabelName( subjectLabel.getLabelName() );
         subjectLabelBO.setSortNum( subjectLabel.getSortNum() );
 
