@@ -1,8 +1,14 @@
 package com.jingdianjichi.auth.application.controller;
 
+import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @Author:zxp
@@ -15,13 +21,17 @@ public class UserController {
 
     // 测试登录，浏览器访问： http://localhost:8081/user/doLogin?username=zhang&password=123456
     @RequestMapping("doLogin")
-    public String doLogin(String username, String password) {
+    public SaResult doLogin(String username, String password) {
         // 此处仅作模拟示例，真实项目需要从数据库中查询数据进行比对
         if("zhang".equals(username) && "123456".equals(password)) {
+            // 第1步，先登录上
             StpUtil.login(10001);
-            return "登录成功";
+            // 第2步，获取 Token  相关参数
+            SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
+            // 第3步，返回给前端
+            return SaResult.data(tokenInfo);
         }
-        return "登录失败";
+        return SaResult.error("登录失败");
     }
 
     // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
