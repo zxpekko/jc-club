@@ -27,5 +27,8 @@
         <module name="jc-club-application-mq" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jc-club-auth-application-test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
