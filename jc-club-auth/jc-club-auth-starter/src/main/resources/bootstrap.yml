@@ -1,6 +1,6 @@
 spring:
   application:
-    name: jc-club-auth
+    name: jc-club-auth-dev
   profiles:
     active: dev
   cloud:
