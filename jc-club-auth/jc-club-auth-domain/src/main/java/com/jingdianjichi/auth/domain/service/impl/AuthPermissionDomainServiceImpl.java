@@ -58,7 +58,9 @@ public class AuthPermissionDomainServiceImpl implements AuthPermissionDomainServ
     @Override
     public List<String> getPermission(String userName) {
         String permissionKey = redisUtil.buildKey(authPermissionPrefix, userName);
+        System.out.println("permissionKey"+permissionKey);
         String permissionValue = redisUtil.get(permissionKey);
+        System.out.println("permissionValue"+permissionValue);
         if (StringUtils.isBlank(permissionValue)) {
             return Collections.emptyList();
         }
@@ -68,5 +70,4 @@ public class AuthPermissionDomainServiceImpl implements AuthPermissionDomainServ
         List<String> authList = permissionList.stream().map(AuthPermission::getPermissionKey).collect(Collectors.toList());
         return authList;
     }
-
 }

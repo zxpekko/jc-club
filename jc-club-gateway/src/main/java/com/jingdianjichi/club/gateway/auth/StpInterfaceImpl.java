@@ -4,8 +4,9 @@ import cn.dev33.satoken.stp.StpInterface;
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-//import com.jingdianjichi.club.gateway.entity.AuthPermission;
-//import com.jingdianjichi.club.gateway.entity.AuthRole;
+import com.jingdianjichi.club.gateway.entity.AuthPermission;
+import com.jingdianjichi.club.gateway.entity.AuthRole;
+import com.jingdianjichi.club.gateway.entity.AuthRole;
 import com.jingdianjichi.club.gateway.redis.RedisUtil;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -48,19 +49,19 @@ public class StpInterfaceImpl implements StpInterface {
         if (StringUtils.isBlank(authValue)) {
             return Collections.emptyList();
         }
-//        List<String> authList = new LinkedList<>();
-//        if (authRolePrefix.equals(prefix)) {
-//            List<AuthRole> roleList = new Gson().fromJson(authValue, new TypeToken<List<AuthRole>>() {
-//            }.getType());
-//            authList = roleList.stream().map(AuthRole::getRoleKey).collect(Collectors.toList());
-//        } else if (authPermissionPrefix.equals(prefix)) {
-//            List<AuthPermission> permissionList = new Gson().fromJson(authValue, new TypeToken<List<AuthPermission>>() {
-//            }.getType());
-//            authList = permissionList.stream().map(AuthPermission::getPermissionKey).collect(Collectors.toList());
-//        }
-//        return authList;
-        List<String> authList = new Gson().fromJson(authValue, List.class);
+        List<String> authList = new LinkedList<>();
+        if (authRolePrefix.equals(prefix)) {
+            List<AuthRole> roleList = new Gson().fromJson(authValue, new TypeToken<List<AuthRole>>() {
+            }.getType());
+            authList = roleList.stream().map(AuthRole::getRoleKey).collect(Collectors.toList());
+        } else if (authPermissionPrefix.equals(prefix)) {
+            List<AuthPermission> permissionList = new Gson().fromJson(authValue, new TypeToken<List<AuthPermission>>() {
+            }.getType());
+            authList = permissionList.stream().map(AuthPermission::getPermissionKey).collect(Collectors.toList());
+        }
         return authList;
+//        List<String> authList = new Gson().fromJson(authValue, List.class);
+//        return authList;
     }
 
 }

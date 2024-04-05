@@ -2,6 +2,7 @@ package com.jingdianjichi.auth.application.controller;
 
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;
 import com.jingdianjichi.auth.application.convert.AuthUserDTOConverter;
@@ -147,9 +148,19 @@ public class UserController {
 //    }
 //
 //    // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
-//    @RequestMapping("isLogin")
-//    public String isLogin() {
-//        return "当前会话是否登录：" + StpUtil.isLogin();
-//    }
+    @RequestMapping("isLogin")
+    public String isLogin() {
+        return "当前会话是否登录：" + StpUtil.isLogin();
+    }
+    @RequestMapping("doLogin")
+    public Result<SaTokenInfo> doLogin(@RequestParam("validCode") String validCode) {
+        try {
+            Preconditions.checkArgument(!StringUtils.isBlank(validCode), "验证码不能为空!");
+            return Result.ok(authUserDomainService.doLogin(validCode));
+        } catch (Exception e) {
+            log.error("UserController.doLogin.error:{}", e.getMessage(), e);
+            return Result.fail("用户登录失败");
+        }
+    }
 
 }
