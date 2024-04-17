@@ -59,4 +59,8 @@ public interface SubjectInfoService {
     int countByCondition(SubjectInfo subjectInfo, Long categoryId, Long labelId);
 
     List<SubjectInfo> queryPage(SubjectInfo subjectInfo, Long categoryId, Long labelId, int start, Integer pageSize);
+
+    List<SubjectInfo> batchQueryById(List<Long> subjectIdList);
+
+    Long querySubjectIdCursor(Long subjectId, Long categoryId, Long labelId, int i);
 }

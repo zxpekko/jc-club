@@ -1,7 +1,11 @@
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\entity\Result.java
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\entity\PageInfo.java
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\enums\SubjectInfoTypeEnum.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\util\IdWorkerUtil.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\util\LoginUtil.java
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\enums\CategoryTypeEnum.java
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\enums\ResultCodeEnum.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\context\LoginContextHolder.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\enums\SubjectLikedStatusEnum.java
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\enums\IsDeletedFlagEnum.java
 G:\IDEAnew\my-jc-club\jc-club\jc-club-subject\jc-club-common\src\main\java\com\jingdianjichi\subject\common\entity\PageResult.java

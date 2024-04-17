@@ -1,10 +1,10 @@
 com\jingdianjichi\oss\adapter\MinioStorageAdapter.class
-com\jingdianjichi\oss\config\StorageConfig.class
-com\jingdianjichi\oss\adapter\StorageAdapter.class
 com\jingdianjichi\oss\adapter\AliStorageAdapter.class
 com\jingdianjichi\oss\service\FileService.class
 com\jingdianjichi\oss\OssApplication.class
 com\jingdianjichi\oss\controller\FileController.class
 com\jingdianjichi\oss\util\MinioUtil.class
-com\jingdianjichi\oss\config\MinioConfig.class
 com\jingdianjichi\oss\entity\FileInfo.class
+com\jingdianjichi\oss\config\StorageConfig.class
+com\jingdianjichi\oss\adapter\StorageAdapter.class
+com\jingdianjichi\oss\config\MinioConfig.class

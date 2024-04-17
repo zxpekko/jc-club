@@ -80,5 +80,4 @@ public class MinioStorageAdapter implements StorageAdapter {
     public String getUrl(String bucket, String objectName) {
         return url + "/" + bucket + "/" + objectName;
     }
-
 }

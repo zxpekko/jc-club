@@ -13,11 +13,13 @@ import java.util.List;
 public interface SubjectCategoryDomainService {
     void add(SubjectCategoryBO subjectCategoryBO);
 
-    List<SubjectCategoryBO> queryPrimaryCategory();
+    List<SubjectCategoryBO> queryPrimaryCategory(SubjectCategoryBO subjectCategoryBO);
 
     List<SubjectCategoryBO> queryCategory(SubjectCategoryBO subjectCategoryBO);
 
     Boolean update(SubjectCategoryBO subjectCategoryBO);
 
     Boolean deleteById(SubjectCategoryBO subjectCategoryBO);
+
+    List<SubjectCategoryBO> queryCategoryAndLabel(SubjectCategoryBO subjectCategoryBO);
 }

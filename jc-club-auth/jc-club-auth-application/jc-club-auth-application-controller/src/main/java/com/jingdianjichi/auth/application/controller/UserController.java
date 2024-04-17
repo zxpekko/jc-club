@@ -2,16 +2,13 @@ package com.jingdianjichi.auth.application.controller;
 
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.util.SaResult;
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;
 import com.jingdianjichi.auth.application.convert.AuthUserDTOConverter;
-import com.jingdianjichi.auth.application.dto.AuthUserDTO;
-import com.jingdianjichi.auth.common.entity.Result;
 import com.jingdianjichi.auth.domain.entity.AuthUserBO;
 import com.jingdianjichi.auth.domain.service.AuthUserDomainService;
-//import com.jingdianjichi.auth.entity.AuthUserDTO;
-//import com.jingdianjichi.auth.entity.Result;
+import com.jingdianjichi.auth.entity.AuthUserDTO;
+import com.jingdianjichi.auth.entity.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -81,21 +78,21 @@ public class UserController {
         }
     }
 //
-//    /**
-//     * 用户退出
-//     */
-//    @RequestMapping("logOut")
-//    public Result logOut(@RequestParam String userName) {
-//        try {
-//            log.info("UserController.logOut.userName:{}", userName);
-//            Preconditions.checkArgument(!StringUtils.isBlank(userName), "用户名不能为空");
-//            StpUtil.logout(userName);
-//            return Result.ok();
-//        } catch (Exception e) {
-//            log.error("UserController.logOut.error:{}", e.getMessage(), e);
-//            return Result.fail("用户登出失败");
-//        }
-//    }
+    /**
+     * 用户退出
+     */
+    @RequestMapping("logOut")
+    public Result logOut(@RequestParam String userName) {
+        try {
+            log.info("UserController.logOut.userName:{}", userName);
+            Preconditions.checkArgument(!StringUtils.isBlank(userName), "用户名不能为空");
+            StpUtil.logout(userName);
+            return Result.ok();
+        } catch (Exception e) {
+            log.error("UserController.logOut.error:{}", e.getMessage(), e);
+            return Result.fail("用户登出失败");
+        }
+    }
 //
     /**
      * 删除用户
@@ -150,11 +147,13 @@ public class UserController {
 //    // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
     @RequestMapping("isLogin")
     public String isLogin() {
+        log.info("调用isLogin");
         return "当前会话是否登录：" + StpUtil.isLogin();
     }
     @RequestMapping("doLogin")
     public Result<SaTokenInfo> doLogin(@RequestParam("validCode") String validCode) {
         try {
+            log.info("调用dologin");
             Preconditions.checkArgument(!StringUtils.isBlank(validCode), "验证码不能为空!");
             return Result.ok(authUserDomainService.doLogin(validCode));
         } catch (Exception e) {

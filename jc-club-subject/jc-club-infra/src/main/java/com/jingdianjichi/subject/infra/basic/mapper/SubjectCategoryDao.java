@@ -74,5 +74,7 @@ public interface SubjectCategoryDao extends BaseMapper<SubjectCategory> {
     int deleteById(Long id);
 
     List<SubjectCategory> queryPrimaryCategory(SubjectCategory subjectCategory);
+
+    Integer querySubjectCount(Long id);
 }
 

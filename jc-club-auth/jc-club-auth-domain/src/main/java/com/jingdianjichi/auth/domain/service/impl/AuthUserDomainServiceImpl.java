@@ -44,6 +44,7 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
 
     private String authRolePrefix = "auth.role";
     private static final String LOGIN_PREFIX = "loginCode";
+    private static final String AVATAR="http://117.72.36.217:9000/jichi/trueicon/icon.png";
     @Resource
     private RedisUtil redisUtil;
     @Resource
@@ -68,6 +69,7 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
         }
         authUser.setStatus(AuthUserStatusEnum.OPEN.getCode());
         authUser.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
+        authUser.setAvatar(AVATAR);
         int insert = authUserService.insert(authUser);
         //上述是注册逻辑，接下来是用户角色的关联。
         AuthRole authRole = new AuthRole();

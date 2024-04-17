@@ -13,6 +13,7 @@ import com.jingdianjichi.subject.domain.service.SubjectCategoryDomainService;
 import com.jingdianjichi.subject.domain.service.SubjectInfoDomainService;
 import com.jingdianjichi.subject.domain.service.SubjectLabelDomainService;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectCategory;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectInfoEs;
 import com.jingdianjichi.subject.infra.basic.service.SubjectCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -109,5 +110,39 @@ public class SubjectController {
             return Result.fail("查询题目详情失败");
         }
     }
-
+    /**
+     * 获取题目贡献榜
+     */
+    @PostMapping("/getContributeList")
+    public Result<List<SubjectInfoDTO>> getContributeList() {
+        try {
+            List<SubjectInfoBO> boList = subjectInfoDomainService.getContributeList();
+            List<SubjectInfoDTO> dtoList = SubjectInfoDTOConverter.INSTANCE.convertBOToDTOList(boList);
+            return Result.ok(dtoList);
+        } catch (Exception e) {
+            log.error("SubjectCategoryController.getContributeList.error:{}", e.getMessage(), e);
+            return Result.fail("获取贡献榜失败");
+        }
+    }
+    /**
+     * 全文检索
+     *
+     */
+    @PostMapping("/getSubjectPageBySearch")
+    public Result<PageResult<SubjectInfoEs>> getSubjectPageBySearch(@RequestBody SubjectInfoDTO subjectInfoDTO) {
+        try {
+            if (log.isInfoEnabled()) {
+                log.info("SubjectController.getSubjectPageBySearch.dto:{}", JSON.toJSONString(subjectInfoDTO));
+            }
+            Preconditions.checkArgument(StringUtils.isNotBlank(subjectInfoDTO.getKeyWord()), "关键词不能为空");
+            SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
+            subjectInfoBO.setPageNo(subjectInfoDTO.getPageNo());
+            subjectInfoBO.setPageSize(subjectInfoDTO.getPageSize());
+            PageResult<SubjectInfoEs> boPageResult = subjectInfoDomainService.getSubjectPageBySearch(subjectInfoBO);
+            return Result.ok(boPageResult);
+        } catch (Exception e) {
+            log.error("SubjectCategoryController.getSubjectPageBySearch.error:{}", e.getMessage(), e);
+            return Result.fail("全文检索失败");
+        }
+    }
 }

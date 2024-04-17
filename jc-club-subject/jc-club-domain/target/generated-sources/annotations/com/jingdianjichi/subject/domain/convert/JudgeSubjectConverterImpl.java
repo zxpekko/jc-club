@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-23T14:28:09+0800",
+    date = "2024-04-16T16:45:06+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_331 (Oracle Corporation)"
 )
 public class JudgeSubjectConverterImpl implements JudgeSubjectConverter {

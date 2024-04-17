@@ -50,4 +50,6 @@ public interface SubjectCategoryService {
     List<SubjectCategory> queryPrimaryCategory(SubjectCategory subjectCategory);
 
     List<SubjectCategory> queryCategoryByPrimary(SubjectCategory subjectCategory);
+
+    Integer querySubjectCount(Long id);
 }

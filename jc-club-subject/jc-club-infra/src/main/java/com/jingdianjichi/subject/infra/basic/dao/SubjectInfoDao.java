@@ -1,6 +1,7 @@
 package com.jingdianjichi.subject.infra.basic.dao;
 
 import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
+import com.jingdianjichi.subject.infra.basic.entity.SubjectLabel;
 import org.apache.ibatis.annotations.Param;
 //import org.springframework.data.domain.Pageable;
 import java.awt.print.Pageable;
@@ -26,10 +27,10 @@ public interface SubjectInfoDao {
      * 查询指定行数据
      *
      * @param subjectInfo 查询条件
-     * @param pageable         分页对象
+//     * @param pageable         分页对象
      * @return 对象列表
      */
-//    List<SubjectInfo> queryAllByLimit(SubjectInfo subjectInfo, @Param("pageable") Pageable pageable);
+    List<SubjectInfo> queryAllByLimit(SubjectInfo subjectInfo);
 
     /**
      * 统计总行数
@@ -89,5 +90,11 @@ public interface SubjectInfoDao {
                                 @Param("labelId") Long labelId,
                                 @Param("start") int start,
                                 @Param("pageSize") Integer pageSize);
+    List<SubjectInfo> batchQueryById(@Param("list") List<Long> SubjectInfoIdList);
+
+    Long querySubjectIdCursor(@Param("subjectId") Long subjectId,
+                              @Param("categoryId") Long categoryId,
+                              @Param("labelId") Long labelId,
+                              @Param("cursor") int cursor);
 }
 

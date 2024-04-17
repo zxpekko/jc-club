@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-23T14:28:11+0800",
+    date = "2024-04-16T16:45:10+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_331 (Oracle Corporation)"
 )
 public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConverter {
@@ -26,6 +26,7 @@ public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConver
         subjectCategoryBO.setCategoryType( subjectCategorydto.getCategoryType() );
         subjectCategoryBO.setImageUrl( subjectCategorydto.getImageUrl() );
         subjectCategoryBO.setParentId( subjectCategorydto.getParentId() );
+        subjectCategoryBO.setCount( subjectCategorydto.getCount() );
 
         return subjectCategoryBO;
     }
@@ -38,13 +39,14 @@ public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConver
 
         List<SubjectCategoryDTO> list = new ArrayList<SubjectCategoryDTO>( subjectCategoryBOList.size() );
         for ( SubjectCategoryBO subjectCategoryBO : subjectCategoryBOList ) {
-            list.add( subjectCategoryBOToSubjectCategoryDTO( subjectCategoryBO ) );
+            list.add( convertBoToCategoryDTO( subjectCategoryBO ) );
         }
 
         return list;
     }
 
-    protected SubjectCategoryDTO subjectCategoryBOToSubjectCategoryDTO(SubjectCategoryBO subjectCategoryBO) {
+    @Override
+    public SubjectCategoryDTO convertBoToCategoryDTO(SubjectCategoryBO subjectCategoryBO) {
         if ( subjectCategoryBO == null ) {
             return null;
         }
@@ -56,6 +58,7 @@ public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConver
         subjectCategoryDTO.setCategoryType( subjectCategoryBO.getCategoryType() );
         subjectCategoryDTO.setImageUrl( subjectCategoryBO.getImageUrl() );
         subjectCategoryDTO.setParentId( subjectCategoryBO.getParentId() );
+        subjectCategoryDTO.setCount( subjectCategoryBO.getCount() );
 
         return subjectCategoryDTO;
     }

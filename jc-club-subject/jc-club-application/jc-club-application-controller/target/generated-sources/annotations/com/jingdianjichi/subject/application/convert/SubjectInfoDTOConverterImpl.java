@@ -10,7 +10,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-23T14:28:11+0800",
+    date = "2024-04-16T16:45:10+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_331 (Oracle Corporation)"
 )
 public class SubjectInfoDTOConverterImpl implements SubjectInfoDTOConverter {
@@ -48,6 +48,14 @@ public class SubjectInfoDTOConverterImpl implements SubjectInfoDTOConverter {
         if ( list3 != null ) {
             subjectInfoBO.setLabelName( new ArrayList<String>( list3 ) );
         }
+        subjectInfoBO.setKeyWord( subjectInfoDTO.getKeyWord() );
+        subjectInfoBO.setCreateUser( subjectInfoDTO.getCreateUser() );
+        subjectInfoBO.setCreateUserAvatar( subjectInfoDTO.getCreateUserAvatar() );
+        subjectInfoBO.setSubjectCount( subjectInfoDTO.getSubjectCount() );
+        subjectInfoBO.setLiked( subjectInfoDTO.getLiked() );
+        subjectInfoBO.setLikedCount( subjectInfoDTO.getLikedCount() );
+        subjectInfoBO.setNextSubjectId( subjectInfoDTO.getNextSubjectId() );
+        subjectInfoBO.setLastSubjectId( subjectInfoDTO.getLastSubjectId() );
 
         return subjectInfoBO;
     }
@@ -85,6 +93,14 @@ public class SubjectInfoDTOConverterImpl implements SubjectInfoDTOConverter {
         if ( list3 != null ) {
             subjectInfoDTO.setLabelName( new ArrayList<String>( list3 ) );
         }
+        subjectInfoDTO.setKeyWord( subjectInfoBO.getKeyWord() );
+        subjectInfoDTO.setCreateUser( subjectInfoBO.getCreateUser() );
+        subjectInfoDTO.setCreateUserAvatar( subjectInfoBO.getCreateUserAvatar() );
+        subjectInfoDTO.setSubjectCount( subjectInfoBO.getSubjectCount() );
+        subjectInfoDTO.setLiked( subjectInfoBO.getLiked() );
+        subjectInfoDTO.setLikedCount( subjectInfoBO.getLikedCount() );
+        subjectInfoDTO.setNextSubjectId( subjectInfoBO.getNextSubjectId() );
+        subjectInfoDTO.setLastSubjectId( subjectInfoBO.getLastSubjectId() );
 
         return subjectInfoDTO;
     }

@@ -70,6 +70,16 @@
         </where>
     </select>
 
+    <select id="batchQueryById" resultMap="SubjectInfoMap">
+        select
+        id, subject_name, subject_difficult, settle_name, subject_type, subject_score, subject_parse, created_by, created_time, update_by, update_time, is_deleted
+        from subject_info
+        where id in
+        <foreach open="(" close=")" collection="list" item="id" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
@@ -112,6 +122,24 @@
                 and is_deleted = #{isDeleted}
             </if>
         </where>
+    </select>
+    <select id="querySubjectIdCursor" resultType="java.lang.Long">
+        select a.id
+        from subject_info a,
+        subject_mapping b
+        where a.id = b.subject_id
+        and b.category_id = #{categoryId}
+        and b.label_id = #{labelId}
+        <if test="cursor !=null and cursor == 1">
+            and a.id > #{subjectId}
+            limit 0,1
+        </if>
+        <if test="cursor !=null and cursor == 0">
+            and a.id &lt; #{subjectId}
+            order by a.id desc
+            limit 0,1
+        </if>
+
     </select>
 
     <select id="countByCondition" resultType="java.lang.Integer">

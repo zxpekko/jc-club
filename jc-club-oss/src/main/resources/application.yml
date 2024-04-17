@@ -4,6 +4,8 @@ minio:
   url: http://117.72.36.217:9000
   accessKey: minioadmin
   secretKey: minioadmin
+
+
 #storage:
 #  service:
 #    type: minio
@@ -24,7 +26,11 @@ minio:
 #      discovery:
 #        enabled: true
 #        server-addr: 117.72.36.217:8848
-
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
 
 

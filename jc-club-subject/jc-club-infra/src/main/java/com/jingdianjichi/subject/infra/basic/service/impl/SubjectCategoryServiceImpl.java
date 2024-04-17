@@ -87,4 +87,9 @@ public class SubjectCategoryServiceImpl implements SubjectCategoryService {
 //        querySubjectCategory.setParentId(subjectCategory.getId());
         return null;
     }
+
+    @Override
+    public Integer querySubjectCount(Long id) {
+        return this.subjectCategoryDao.querySubjectCount(id);
+    }
 }

@@ -1,16 +1,10 @@
-package com.jingdianjichi.auth.common.entity;
+package com.jingdianjichi.oss.entity;
 
-//import com.jingdianjichi.subject.common.enums.ResultCodeEnum;
-import com.jingdianjichi.auth.common.enums.ResultCodeEnum;
 import lombok.Data;
 
-/**
- * @Author:zxp
- * @Description:
- * @Date:10:48 2024/3/20
- */
 @Data
 public class Result<T> {
+
     private Boolean success;
 
     private Integer code;
@@ -18,6 +12,7 @@ public class Result<T> {
     private String message;
 
     private T data;
+
     public static Result ok(){
         Result result = new Result();
         result.setSuccess(true);
@@ -25,6 +20,7 @@ public class Result<T> {
         result.setMessage(ResultCodeEnum.SUCCESS.getDesc());
         return result;
     }
+
     public static <T> Result ok(T data){
         Result result = new Result();
         result.setSuccess(true);
@@ -33,6 +29,7 @@ public class Result<T> {
         result.setData(data);
         return result;
     }
+
     public static Result fail(){
         Result result = new Result();
         result.setSuccess(false);

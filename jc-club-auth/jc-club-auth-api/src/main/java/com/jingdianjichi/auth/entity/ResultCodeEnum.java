@@ -1,6 +1,5 @@
-package com.jingdianjichi.auth.common.enums;
+package com.jingdianjichi.auth.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
