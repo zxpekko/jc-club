@@ -32,7 +32,7 @@ public class LoginContextHolder {
     }
 
     public static Map<String, Object> getThreadLocalMap() {
-        Map<String, Object> map = THREAD_LOCAL.get();
+        Map<String, Object> map = THREAD_LOCAL.get();//直接获取的是资源对象，不是threadlocalmap，而是这个里面的值，key是当前的threadlocal对象。
         if (Objects.isNull(map)) {
             map = new ConcurrentHashMap<>();
             THREAD_LOCAL.set(map);

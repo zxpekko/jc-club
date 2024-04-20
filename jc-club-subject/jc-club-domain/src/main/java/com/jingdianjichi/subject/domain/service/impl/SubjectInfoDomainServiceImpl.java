@@ -69,6 +69,7 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
         }
         SubjectInfo subjectInfo = SubjectInfoConverter.INSTANCE.convertBOToInfo(subjectInfoBO);
         subjectInfo.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
+//        subjectInfo.setCreatedBy(LoginUtil.getLoginId());//mybatis拦截器完成了。
         subjectInfoService.insert(subjectInfo);
         SubjectTypeHandler handler = subjectTypeHandlerFactory.getHandler(subjectInfo.getSubjectType());
         subjectInfoBO.setId(subjectInfo.getId());
