@@ -29,5 +29,5 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
         LoginContextHolder.remove();
-    }
+    }//此方法在整个请求处理完毕之后执行，请求处理完毕之后，这个ThreadLocalMap中的信息就可以删除了，防止OOM。
 }

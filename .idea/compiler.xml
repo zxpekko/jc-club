@@ -11,17 +11,21 @@
         <module name="jc-club-gateway" />
         <module name="jc-club-auth-application-job" />
         <module name="jc-club-application-controller" />
+        <module name="jc-club-practice-server" />
         <module name="jc-club-auth-api" />
+        <module name="jc-club-practice-api" />
         <module name="jc-club-domain" />
         <module name="jc-club-auth-domain" />
         <module name="jc-club-auth-starter" />
         <module name="jc-club-auth-application-mq" />
         <module name="jc-club-subject-api" />
+        <module name="jc-club-circle-server" />
         <module name="jc-club-infra" />
         <module name="jc-club-starter" />
         <module name="jc-club-application-job" />
         <module name="jc-club-auth-application" />
         <module name="jc-club-auth-common" />
+        <module name="jc-club-circle-api" />
         <module name="jc-club-common" />
         <module name="jc-club-auth-application-controller" />
         <module name="jc-club-oss" />
@@ -29,6 +33,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jc" target="1.8" />
       <module name="jc-club-auth-application-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

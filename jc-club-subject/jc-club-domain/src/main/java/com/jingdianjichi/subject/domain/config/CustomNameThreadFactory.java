@@ -2,7 +2,10 @@ package com.jingdianjichi.subject.domain.config;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

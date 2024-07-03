@@ -23,15 +23,29 @@
     <file url="file://$PROJECT_DIR$/jc-club-auth/jc-club-auth-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-auth/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-circle/jc-club-circle-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-circle/jc-club-circle-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-circle/jc-club-circle-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-circle/jc-club-circle-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-circle/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-circle/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-oss/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-oss/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-practice/jc-club-practice-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-practice/jc-club-practice-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-practice/jc-club-practice-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-practice/jc-club-practice-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-practice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc-club-practice/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-subject/jc-club-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-subject/jc-club-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-subject/jc-club-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-subject/jc-club-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-wx/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jc-club-wx/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jc/src/main/resources" charset="UTF-8" />
   </component>
 </project>

@@ -70,6 +70,7 @@ public class SubjectLikedController {
             subjectLikedBO.setPageNo(subjectLikedDTO.getPageNo());
             subjectLikedBO.setPageSize(subjectLikedDTO.getPageSize());
             PageResult<SubjectLikedBO> result=subjectLikedDomainService.getSubjectLikedPage(subjectLikedBO);
+
             return Result.ok(result);
         } catch (Exception e) {
             log.error("SubjectLikedController.register.error:{}", e.getMessage(), e);

@@ -17,5 +17,6 @@ public interface SubjectLikedDTOConverter {
 
     SubjectLikedBO convertDTOToBO(SubjectLikedDTO subjectLikedDTO);
 
+
 }
 

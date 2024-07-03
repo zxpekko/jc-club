@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/jc-club-auth/pom.xml" />
         <option value="$PROJECT_DIR$/jc-club-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/jc-club-wx/pom.xml" />
+        <option value="$PROJECT_DIR$/jc-club-practice/pom.xml" />
+        <option value="$PROJECT_DIR$/jc-club-circle/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
