@@ -79,5 +79,6 @@ public interface AuthUserDao {
      */
     int deleteById(Long id);
 
+    List<AuthUser> listUserInfoByIds(List<String> userNameList);
 }
 

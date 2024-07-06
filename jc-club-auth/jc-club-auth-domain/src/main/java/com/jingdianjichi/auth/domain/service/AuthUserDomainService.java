@@ -3,6 +3,8 @@ package com.jingdianjichi.auth.domain.service;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import com.jingdianjichi.auth.domain.entity.AuthUserBO;
 
+import java.util.List;
+
 /**
  * @Author:zxp
  * @Description:
@@ -18,4 +20,6 @@ public interface AuthUserDomainService {
     AuthUserBO getUserInfo(AuthUserBO authUserBO);
 
     SaTokenInfo doLogin(String validCode);
+
+    List<AuthUserBO> listUserInfoByIds(List<String> userNameList);
 }

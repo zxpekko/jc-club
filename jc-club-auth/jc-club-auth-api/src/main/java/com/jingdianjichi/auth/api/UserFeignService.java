@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
  * @Author:zxp
  * @Description:
@@ -17,4 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface UserFeignService {
     @RequestMapping("/user/getUserInfo")
     public Result<AuthUserDTO> getUserInfo(@RequestBody AuthUserDTO authUserDTO);
+    @RequestMapping("/user/listByIds")
+    Result<List<AuthUserDTO>> listUserInfoByIds(@RequestBody List<String> userNameList);
 }

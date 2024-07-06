@@ -56,4 +56,6 @@ public interface AuthUserService {
     boolean deleteById(Long id);
 
     List<AuthUser> queryByCondition(AuthUser authUser);
+
+    List<AuthUser> listUserInfoByIds(List<String> userNameList);
 }
