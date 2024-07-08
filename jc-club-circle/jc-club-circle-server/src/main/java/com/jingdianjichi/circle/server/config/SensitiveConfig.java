@@ -11,7 +11,7 @@ public class SensitiveConfig {
 
     @Bean
     public WordContext wordContext(SensitiveWordsService service) {
-        return new WordContext(true, service);
+        return new WordContext(false, service);
     }
 
     @Bean

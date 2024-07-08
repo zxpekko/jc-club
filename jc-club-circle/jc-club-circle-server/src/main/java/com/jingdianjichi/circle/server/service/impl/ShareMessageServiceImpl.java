@@ -94,10 +94,11 @@ public class ShareMessageServiceImpl extends ServiceImpl<ShareMessageMapper, Sha
         shareMessage.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
         ChickenSocket socket = chickenSocket.getChickenSocket(toId);
         if (Objects.nonNull(socket)) {
-            chickenSocket.sendMessage(shareMessage.getContent(), socket.getSession());
+        chickenSocket.sendMessage(shareMessage.getContent(), socket.getSession());
         }
+        else
+            chickenSocket.sendMessage(shareMessage.getContent(),toId);
         super.save(shareMessage);
-
     }
 
     @Override
@@ -120,6 +121,8 @@ public class ShareMessageServiceImpl extends ServiceImpl<ShareMessageMapper, Sha
         if (Objects.nonNull(socket)) {
             chickenSocket.sendMessage(shareMessage.getContent(), socket.getSession());
         }
+        else
+            chickenSocket.sendMessage(shareMessage.getContent(),toId);
         super.save(shareMessage);
 
     }

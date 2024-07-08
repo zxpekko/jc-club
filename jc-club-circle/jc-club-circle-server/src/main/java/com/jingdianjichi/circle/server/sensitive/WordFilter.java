@@ -217,7 +217,7 @@ public class WordFilter {
             }
         }
 
-        fi.setFlag(flag     );
+        fi.setFlag(flag);
         fi.setIndex(index);
 
         return fi;

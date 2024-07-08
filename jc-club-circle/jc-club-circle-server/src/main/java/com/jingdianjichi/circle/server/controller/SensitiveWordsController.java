@@ -6,6 +6,7 @@ import com.google.common.base.Preconditions;
 import com.jingdianjichi.circle.api.common.Result;
 import com.jingdianjichi.circle.api.enums.IsDeletedFlagEnum;
 import com.jingdianjichi.circle.server.entity.po.SensitiveWords;
+import com.jingdianjichi.circle.server.sensitive.WordContext;
 import com.jingdianjichi.circle.server.service.SensitiveWordsService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -31,6 +32,8 @@ public class SensitiveWordsController {
 
     @Resource
     private SensitiveWordsService sensitiveWordsService;
+    @Resource
+    private WordContext wordContext;
 
     /**
      * 新增敏感词
@@ -46,7 +49,11 @@ public class SensitiveWordsController {
             data.setType(type);
             data.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
             data.setWords(words);
-            return Result.ok(sensitiveWordsService.save(data));
+            boolean save = sensitiveWordsService.save(data);
+            if(save){
+                wordContext.addNewWords(sensitiveWordsService);
+            }
+            return Result.ok(save);
         } catch (IllegalArgumentException e) {
             log.error("参数异常！错误原因{}", e.getMessage(), e);
             return Result.fail(e.getMessage());
@@ -68,7 +75,11 @@ public class SensitiveWordsController {
             Preconditions.checkArgument(Objects.nonNull(id), "参数不能为空！");
             LambdaUpdateWrapper<SensitiveWords> update = Wrappers.<SensitiveWords>lambdaUpdate().set(SensitiveWords::getIsDeleted, IsDeletedFlagEnum.DELETED.getCode())
                     .eq(SensitiveWords::getId, id).eq(SensitiveWords::getIsDeleted, IsDeletedFlagEnum.UN_DELETED.getCode());
-            return Result.ok(sensitiveWordsService.update(update));
+            boolean update1 = sensitiveWordsService.update(update);
+            if(update1){
+                wordContext.removeDelWords(sensitiveWordsService);
+            }
+            return Result.ok(update1);
         } catch (IllegalArgumentException e) {
             log.error("参数异常！错误原因{}", e.getMessage(), e);
             return Result.fail(e.getMessage());

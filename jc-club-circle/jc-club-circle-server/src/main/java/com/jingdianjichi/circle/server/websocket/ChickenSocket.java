@@ -9,6 +9,7 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
@@ -25,6 +26,7 @@ public class ChickenSocket {
      * 存放所有在线的客户端
      */
     private static final Map<String, ChickenSocket> clients = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, ConcurrentLinkedQueue<String>> offlineMessages = new ConcurrentHashMap<>();
 
     /**
      * 与某个客户端的连接会话，需要通过它来给客户端发送数据
@@ -60,6 +62,12 @@ public class ChickenSocket {
             onlineCount.incrementAndGet();
             log.info("有新连接加入：{}，当前在线人数为：{}", erp, onlineCount.get());
             sendMessage("连接成功", this.session);
+            if(offlineMessages.containsKey(this.erp)){
+                ConcurrentLinkedQueue<String> messages = offlineMessages.get(this.erp);
+                while (!messages.isEmpty()){
+                    sendMessage(messages.poll(),this.session);
+                }
+            }
         } catch (Exception e) {
             log.error("建立链接错误{}", e.getMessage(), e);
         }
@@ -75,6 +83,7 @@ public class ChickenSocket {
                 clients.get(erp).session.close();
                 clients.remove(erp);
                 onlineCount.decrementAndGet();
+                offlineMessages.computeIfAbsent(erp, k -> new ConcurrentLinkedQueue<>()).add("你不在的时候，南师很想你哦!!!");
             }
             log.info("有一连接关闭：{}，当前在线人数为：{}", this.erp, onlineCount.get());
         } catch (Exception e) {
@@ -108,12 +117,17 @@ public class ChickenSocket {
      * 指定发送消息
      */
     public void sendMessage(String message, Session session) {
-        log.info("服务端给客户端[{}]发送消息{}", this.erp, message);
-        try {
-            session.getBasicRemote().sendText(message);
-        } catch (IOException e) {
-            log.error("{}发送消息发生异常，异常原因{}", this.erp, message);
+        if(session!=null){
+            log.info("服务端给客户端[{}]发送消息{}", this.erp, message);
+            try {
+                session.getBasicRemote().sendText(message);
+            } catch (IOException e) {
+                log.error("{}发送消息发生异常，异常原因{}", this.erp, message);
+            }
         }
+    }
+    public void sendMessage(String message, String toId) {
+        offlineMessages.computeIfAbsent(toId, k -> new ConcurrentLinkedQueue<>()).add(message);
     }
 
     /**

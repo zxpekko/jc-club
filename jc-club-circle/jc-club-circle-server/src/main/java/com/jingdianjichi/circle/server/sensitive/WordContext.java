@@ -92,7 +92,7 @@ public class WordContext {
 
     }
 
-    private void removeDelWords(SensitiveWordsService service) {
+    public void removeDelWords(SensitiveWordsService service) {
         LambdaUpdateWrapper<SensitiveWords> query = Wrappers.<SensitiveWords>lambdaUpdate()
                 .eq(SensitiveWords::getIsDeleted, IsDeletedFlagEnum.DELETED.getCode());
         List<SensitiveWords> list = service.list(query);
@@ -112,7 +112,7 @@ public class WordContext {
         }
     }
 
-    private void addNewWords(SensitiveWordsService service) {
+    public void addNewWords(SensitiveWordsService service) {
         LambdaUpdateWrapper<SensitiveWords> query = Wrappers.<SensitiveWords>lambdaUpdate()
                 .gt(SensitiveWords::getId, addLastId)
                 .eq(SensitiveWords::getIsDeleted, IsDeletedFlagEnum.UN_DELETED.getCode());
@@ -207,7 +207,9 @@ public class WordContext {
      * @param wordList 敏感词列表
      * @param wordType 黑名单 BLACk，白名单WHITE
      */
-    public void removeWord(Collection<String> wordList, WordType wordType) {
+    public void removeWord(Collection<String> wordList, WordType wordType) {//个人感觉这个算法只能删除不同前缀的敏感词，
+        // 如果敏感词拥有共同前缀
+        // ，则会被误删，但是在没那么严格的敏感词检测场景下够用了。
         if (CollectionUtils.isEmpty(wordList)) {
             return;
         }
@@ -230,6 +232,7 @@ public class WordContext {
                     char[] keys = key.toCharArray();
                     boolean cleanable = false;
                     char lastChar = 0;
+//                    char lastChar=keys[i];个人感觉这边应该是这句代码，上面的代码在最后一个词的处理上删不掉。
                     for (int j = cacheList.size() - 1; j >= 0; j--) {
                         Map cacheMap = cacheList.get(j);
                         if (j == cacheList.size() - 1) {
@@ -255,7 +258,15 @@ public class WordContext {
                             if (String.valueOf(EndType.IS_END.ordinal()).equals(isEnd)) {
                                 cleanable = false;
                             }
-                            cacheMap.remove(lastChar);
+                            cacheMap.remove(lastChar);//这是原始代码
+//                            Object isEnd = cacheMap.get("isEnd");
+//                            cacheMap.remove(lastChar);
+//                            if (String.valueOf(EndType.IS_END.ordinal()).equals(isEnd)) {
+//                                cleanable = false;
+//                            }
+//                            else if(cacheMap.size()>1){
+//                                cleanable=false;
+//                            }//个人感觉应该改成这段
                         }
                         lastChar = keys[j];
                     }
