@@ -1,0 +1,4 @@
+com\jingdianjichi\auth\common\enums\IsDeletedFlagEnum.class
+com\jingdianjichi\auth\common\enums\AuthUserStatusEnum.class
+com\jingdianjichi\auth\common\entity\PageResult.class
+com\jingdianjichi\auth\common\entity\PageInfo.class

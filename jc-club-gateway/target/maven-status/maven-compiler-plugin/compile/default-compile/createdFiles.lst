@@ -1,0 +1,13 @@
+com\jingdianjichi\club\gateway\auth\SaTokenConfigure.class
+com\jingdianjichi\club\gateway\entity\AuthPermission.class
+com\jingdianjichi\club\gateway\ResultCodeEnum.class
+com\jingdianjichi\club\gateway\auth\StpInterfaceImpl$1.class
+com\jingdianjichi\club\gateway\exception\GatewayExceptionHandler.class
+com\jingdianjichi\club\gateway\GatewayApplication.class
+com\jingdianjichi\club\gateway\filter\LoginFilter.class
+com\jingdianjichi\club\gateway\entity\Result.class
+com\jingdianjichi\club\gateway\auth\StpInterfaceImpl$2.class
+com\jingdianjichi\club\gateway\entity\AuthRole.class
+com\jingdianjichi\club\gateway\redis\RedisUtil.class
+com\jingdianjichi\club\gateway\redis\RedisConfig.class
+com\jingdianjichi\club\gateway\auth\StpInterfaceImpl.class

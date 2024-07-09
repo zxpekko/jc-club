@@ -1,0 +1,11 @@
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\filter\LoginFilter.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\entity\AuthRole.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\auth\SaTokenConfigure.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\auth\StpInterfaceImpl.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\exception\GatewayExceptionHandler.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\entity\Result.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\entity\AuthPermission.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\redis\RedisConfig.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\GatewayApplication.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\redis\RedisUtil.java
+G:\IDEAnew\my-jc-club\jc-club\jc-club-gateway\src\main\java\com\jingdianjichi\club\gateway\enums\ResultCodeEnum.java
