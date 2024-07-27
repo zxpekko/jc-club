@@ -71,3 +71,8 @@ xxl:
       port: 9999
       logpath: /data/applogs/xxl-job/jobhandler
       logretentiondays: 30
+
+rocketmq:
+  name-server: 117.72.36.217:9876
+  producer:
+    group: test-group

@@ -10,6 +10,12 @@
     </parent>
 
     <artifactId>jc-club-application-mq</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.jingdianjichi</groupId>
+            <artifactId>jc-club-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

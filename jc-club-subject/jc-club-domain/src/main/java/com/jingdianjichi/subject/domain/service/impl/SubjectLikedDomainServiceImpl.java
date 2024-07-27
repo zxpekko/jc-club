@@ -9,6 +9,7 @@ import com.jingdianjichi.subject.domain.convert.SubjectInfoConverter;
 import com.jingdianjichi.subject.domain.convert.SubjectLikedBOConverter;
 import com.jingdianjichi.subject.domain.entity.SubjectInfoBO;
 import com.jingdianjichi.subject.domain.entity.SubjectLikedBO;
+import com.jingdianjichi.subject.domain.entity.SubjectLikedMessage;
 import com.jingdianjichi.subject.domain.redis.RedisUtil;
 import com.jingdianjichi.subject.domain.service.SubjectLikedDomainService;
 import com.jingdianjichi.subject.infra.basic.entity.SubjectInfo;
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,6 +55,8 @@ public class SubjectLikedDomainServiceImpl implements SubjectLikedDomainService 
     private SqlSession sqlSession;
     @Resource
     private SubjectInfoService subjectInfoService;
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
     /**
      * 添加 题目点赞表 信息
      */
@@ -61,8 +65,13 @@ public class SubjectLikedDomainServiceImpl implements SubjectLikedDomainService 
         Long subjectId = subjectLikedBO.getSubjectId();
         String likeUserId = subjectLikedBO.getLikeUserId();
         Integer status = subjectLikedBO.getStatus();
-        String hashKey = buildSubjectLikedKey(subjectId.toString(), likeUserId);
-        redisUtil.putHash(SUBJECT_LIKED_KEY, hashKey, status);
+//        String hashKey = buildSubjectLikedKey(subjectId.toString(), likeUserId);
+//        redisUtil.putHash(SUBJECT_LIKED_KEY, hashKey, status);
+        SubjectLikedMessage subjectLikedMessage = new SubjectLikedMessage();
+        subjectLikedMessage.setSubjectId(subjectId);
+        subjectLikedMessage.setLikeUserId(likeUserId);
+        subjectLikedMessage.setStatus(status);
+        rocketMQTemplate.convertAndSend("subject-liked", JSON.toJSONString(subjectLikedMessage));
         String detailKey = SUBJECT_LIKED_DETAIL_KEY + "." + subjectId + "." + likeUserId;
         String countKey = SUBJECT_LIKED_COUNT_KEY + "." + subjectId;
         if (SubjectLikedStatusEnum.LIKED.getCode() == status) {
@@ -158,6 +167,18 @@ public class SubjectLikedDomainServiceImpl implements SubjectLikedDomainService 
         pageResult.setRecords(subjectInfoBOS);
         pageResult.setTotal(count);
         return pageResult;
+    }
+
+    @Override
+    public void syncLikedByMsg(SubjectLikedBO subjectLikedBO) {
+        List<SubjectLiked> subjectLikedList = new LinkedList<>();
+        SubjectLiked subjectLiked = new SubjectLiked();
+        subjectLiked.setSubjectId(Long.valueOf(subjectLikedBO.getSubjectId()));
+        subjectLiked.setLikeUserId(subjectLikedBO.getLikeUserId());
+        subjectLiked.setStatus(subjectLikedBO.getStatus());
+        subjectLiked.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
+        subjectLikedList.add(subjectLiked);
+        subjectLikedService.batchInsertOrUpdate(subjectLikedList);
     }
 
     private String buildSubjectLikedKey(String subjectId, String userId) {

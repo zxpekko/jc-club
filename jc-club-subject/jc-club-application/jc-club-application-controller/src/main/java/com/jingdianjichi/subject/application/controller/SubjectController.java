@@ -17,9 +17,11 @@ import com.jingdianjichi.subject.infra.basic.entity.SubjectInfoEs;
 import com.jingdianjichi.subject.infra.basic.service.SubjectCategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
+import org.springframework.data.repository.query.Param;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
-
+//import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -34,6 +36,8 @@ import java.util.List;
 public class SubjectController {
     @Resource
     private SubjectInfoDomainService subjectInfoDomainService;
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
     /**
      * 新增题目
      */
@@ -144,5 +148,13 @@ public class SubjectController {
             log.error("SubjectCategoryController.getSubjectPageBySearch.error:{}", e.getMessage(), e);
             return Result.fail("全文检索失败");
         }
+    }
+    /**
+     * 测试mq发送
+     */
+    @PostMapping("/pushMessage")
+    public Result<Boolean> pushMessage(@Param("id") int id) {
+        rocketMQTemplate.convertAndSend("test-topic", "鸡翅早上好" + id);
+        return Result.ok(true);
     }
 }

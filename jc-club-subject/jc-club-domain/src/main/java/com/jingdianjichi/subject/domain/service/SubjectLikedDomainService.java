@@ -26,4 +26,6 @@ public interface SubjectLikedDomainService {
     void syncLiked();
 
     PageResult<SubjectLikedBO> getSubjectLikedPage(SubjectLikedBO subjectLikedBO);
+
+    void syncLikedByMsg(SubjectLikedBO subjectLikedBO);
 }
