@@ -103,5 +103,16 @@ public class RedisUtil {
         return redisTemplate.opsForZSet().rank(key, obj);
     }
 
-
+    // 增加元素到Set
+    public void addElementToSet(String key, String... values) {
+        redisTemplate.opsForSet().add(key, values);
+    }
+    // 从Set中移除元素
+    public void removeElementFromSet(String key, String... values) {
+        redisTemplate.opsForSet().remove(key, (Object[]) values);
+    }
+    // 查询Set中是否包含某个元素
+    public boolean isMemberOfSet(String key, String value) {
+        return redisTemplate.opsForSet().isMember(key, value);
+    }
 }

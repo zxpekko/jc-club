@@ -45,6 +45,7 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
     private String authRolePrefix = "auth.role";
     private static final String LOGIN_PREFIX = "loginCode";
     private static final String AVATAR="http://117.72.36.217:9000/jichi/trueicon/icon.png";
+    private final String prefix="loginIdSet";
     @Resource
     private RedisUtil redisUtil;
     @Resource
@@ -141,9 +142,10 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
         this.register(authUserBO);
         StpUtil.login(openId);
         SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
+        if(!redisUtil.isMemberOfSet(prefix,openId))
+            redisUtil.addElementToSet(prefix,openId);
         return tokenInfo;
     }
-
     @Override
     public List<AuthUserBO> listUserInfoByIds(List<String> userNameList) {
         List<AuthUser> userList = authUserService.listUserInfoByIds(userNameList);

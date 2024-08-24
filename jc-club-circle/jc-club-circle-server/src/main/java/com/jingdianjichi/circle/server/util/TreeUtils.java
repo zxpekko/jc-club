@@ -22,9 +22,7 @@ public class TreeUtils {
             List<TreeNode> ts = groups.get(pnd.getNodeId());
             pnd.setChildren(ts);
         }).filter(TreeNode::getRootNode).collect(Collectors.toList());
-
     }
-
     public static <T extends TreeNode> void findAll(List<T> result, TreeNode node, Long targetId) {
 
         if (node.getNodeId().equals(targetId) || node.getNodePId().equals(targetId)) {

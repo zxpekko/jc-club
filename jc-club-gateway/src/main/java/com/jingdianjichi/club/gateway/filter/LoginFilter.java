@@ -3,6 +3,7 @@ package com.jingdianjichi.club.gateway.filter;
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import com.google.gson.Gson;
+import com.jingdianjichi.club.gateway.util.JwtUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -22,6 +23,7 @@ import reactor.core.publisher.Mono;
 @Component
 @Slf4j
 public class LoginFilter implements GlobalFilter {
+    private final String jwtLoginId="jwtLoginId";
     @Override
     @SneakyThrows
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -36,7 +38,9 @@ public class LoginFilter implements GlobalFilter {
         SaTokenInfo tokenInfo = StpUtil.getTokenInfo();
         log.info("LoginFilter.filter.url:{}", new Gson().toJson(tokenInfo));
         String loginId = (String) tokenInfo.getLoginId();
+        String jwtToken = JwtUtils.createToken(loginId, loginId);
         mutate.header("loginId", loginId);
+        mutate.header(jwtLoginId,jwtToken);
         return chain.filter(exchange.mutate().request(mutate.build()).build());
     }
 }
